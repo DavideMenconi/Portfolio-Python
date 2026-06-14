@@ -1,4 +1,5 @@
 import pandas as pd
+from helper import converti_in_minuti
 
 def converti_in_minuti(colonna_tempo):
     parti = colonna_tempo.str.split(":", expand=True).astype(int)
