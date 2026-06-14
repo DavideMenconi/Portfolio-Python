@@ -1,12 +1,6 @@
 import pandas as pd
 from helper import converti_in_minuti
 
-def converti_in_minuti(colonna_tempo):
-    parti = colonna_tempo.str.split(":", expand=True).astype(int)
-
-    return parti[0] * 24 * 60 + parti[1] * 60 + parti[2]
-
-
 def ottieniDatiTelefonate(file):
     df = pd.read_csv(file, sep=";")
 
