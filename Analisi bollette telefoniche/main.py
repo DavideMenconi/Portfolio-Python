@@ -1,10 +1,18 @@
 import pandas as pd
-from helper import converti_in_minuti
+from helper import converti_in_minuti, tempo_valido
 
 def ottieniDatiTelefonate(file):
     df = pd.read_csv(file, sep=";")
 
-    df["Cod_Chiamante"] = (df["Cod_Chiamante"].astype(str).str.replace("#", "", regex=False).str.strip().astype(int))
+    df["Cod_Chiamante"] = (
+        df["Cod_Chiamante"]
+        .astype(str)
+        .str.replace("#", "", regex=False)
+        .str.strip()
+        .astype(int)
+    )
+
+    df = df[tempo_valido(df["Inizio"]) & tempo_valido(df["Fine"])].copy()
 
     df["Inizio"] = converti_in_minuti(df["Inizio"])
     df["Fine"] = converti_in_minuti(df["Fine"])
@@ -16,7 +24,8 @@ def ottieniDatiTelefonate(file):
 
     df = df[df["Cod_Chiamante"] != df["Cod_Destinatario"]].copy()
 
-    lista_telefonate = list(zip(df["Cod_Chiamante"].astype(int),
+    lista_telefonate = list(zip(
+        df["Cod_Chiamante"].astype(int),
         df["Cod_Destinatario"].astype(int),
         df["Cod_Cella_Chiamante"].astype(int),
         df["Cod_Cella_Destinatario"].astype(int),
@@ -24,7 +33,7 @@ def ottieniDatiTelefonate(file):
     ))
 
     return lista_telefonate
-
+    
 def calcolaBollette(file):
     datiChiamate = ottieniDatiTelefonate(file)
 
