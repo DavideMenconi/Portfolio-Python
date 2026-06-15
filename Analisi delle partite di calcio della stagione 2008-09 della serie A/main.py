@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Script convertito da Progetto_2.ipynb.
-"""
-
 li=[ ("31/8/08", "Udinese", "Palermo", 3, 1 ),
  ("31/8/08", "Sampdoria", "Inter", 1, 1 ),
  ("31/8/08", "Torino", "Lecce", 3, 0 ),
