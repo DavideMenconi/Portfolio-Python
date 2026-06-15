@@ -1,14 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Script convertito da progetto_bibliosoftware.ipynb.
-"""
-
-# ##aggiungi_libro(titolo, copie)
-# Descrizione: Aggiunge un nuovo libro alla biblioteca con il numero di copie specificato.
-# Se il libro esiste già, aggiorna il numero di copie aggiungendo quelle nuove.
-# Se il libro non esiste, lo aggiunge al sistema.
-#
-
 import pandas as pd
 
 libri = [
@@ -24,7 +13,10 @@ libri = [
     {"titolo": "Delitto e castigo", "copie_totali": 3, "copie_disponibili": 3, "copie_prestate": 0}
 ]
 
-
+# ##aggiungi_libro(titolo, copie)
+# Descrizione: Aggiunge un nuovo libro alla biblioteca con il numero di copie specificato.
+# Se il libro esiste già, aggiorna il numero di copie aggiungendo quelle nuove.
+# Se il libro non esiste, lo aggiunge al sistema.
 def aggiungi_libro(titolo, copie):
     if copie <= 0:
         print("Il numero di copie deve essere maggiore di zero.")
